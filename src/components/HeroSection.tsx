@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import heroVideo from "@/assets/1226.mp4";
-import heroVideoMobile from "@/assets/1226_mobile.mp4";
+import heroVideo from "@/assets/hero_new.mp4";
 
 interface HeroSectionProps {
   ctaLink?: string;
@@ -11,26 +10,15 @@ export const HeroSection = ({
 }: HeroSectionProps) => {
   return (
     <section className="relative h-screen w-full overflow-hidden bg-secondary">
-      {/* Video background - Desktop */}
+      {/* Video background */}
       <video
         autoPlay
         muted
         loop
         playsInline
-        className="absolute inset-0 w-full h-full object-cover hidden md:block"
+        className="absolute inset-0 w-full h-full object-cover"
       >
         <source src={heroVideo} type="video/mp4" />
-      </video>
-      
-      {/* Video background - Mobile */}
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover md:hidden"
-      >
-        <source src={heroVideoMobile} type="video/mp4" />
       </video>
       
       {/* Overlay */}
