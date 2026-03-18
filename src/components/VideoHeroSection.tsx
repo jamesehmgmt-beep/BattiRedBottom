@@ -7,7 +7,7 @@ interface VideoHeroSectionProps {
 }
 
 export const VideoHeroSection = ({ 
-  ctaLink = "/category/shapewear",
+  ctaLink = "/category/best-seller",
   className 
 }: VideoHeroSectionProps) => {
   return (

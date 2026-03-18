@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import braImage from "@/assets/bra.png";
-import bodysuitImage from "@/assets/bodysuit.png";
-import shortsImage from "@/assets/shorts.png";
+import braImage from "@/assets/bra.webp";
+import bodysuitImage from "@/assets/bodysuit.webp";
+import shortsImage from "@/assets/shorts.webp";
 
 export const CategoryGrid = () => {
   return (

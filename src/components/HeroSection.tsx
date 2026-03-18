@@ -6,7 +6,7 @@ interface HeroSectionProps {
 }
 
 export const HeroSection = ({ 
-  ctaLink = "/category/shapewear"
+  ctaLink = "/category/best-seller"
 }: HeroSectionProps) => {
   return (
     <section className="relative h-screen w-full overflow-hidden bg-secondary">
