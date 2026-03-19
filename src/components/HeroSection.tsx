@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import heroVideo from "@/assets/hero_new.mp4";
+import heroImage from "@/assets/herobatti.jpg";
 
 interface HeroSectionProps {
   ctaLink?: string;
@@ -10,16 +10,12 @@ export const HeroSection = ({
 }: HeroSectionProps) => {
   return (
     <section className="relative h-screen w-full overflow-hidden bg-secondary">
-      {/* Video background */}
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
+      {/* Hero image background */}
+      <img
+        src={heroImage}
+        alt="BATTI Premium Footwear"
         className="absolute inset-0 w-full h-full object-cover"
-      >
-        <source src={heroVideo} type="video/mp4" />
-      </video>
+      />
       
       {/* Overlay */}
       <div className="absolute inset-0 hero-overlay" />
