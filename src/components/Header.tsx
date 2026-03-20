@@ -24,12 +24,12 @@ const footwearCategories = [
 const mainNavItems = [
   { title: "BESTSELLERS", link: "/category/best-seller" },
   { title: "APPAREL", link: "/apparel", hasSubmenu: true, submenuKey: "apparel" as const },
-  { title: "FOOTWEAR", link: "/category/heels", hasSubmenu: true, submenuKey: "footwear" as const },
+  { title: "FOOTWEAR", link: "/footwear", hasSubmenu: true, submenuKey: "footwear" as const },
 ];
 
 const submenuData = {
   apparel: { categories: apparelCategories, allLabel: "All Apparel", allLink: "/apparel" },
-  footwear: { categories: footwearCategories, allLabel: "All Footwear", allLink: "/category/heels" },
+  footwear: { categories: footwearCategories, allLabel: "All Footwear", allLink: "/footwear" },
 };
 
 export const Header = () => {
@@ -183,7 +183,7 @@ export const Header = () => {
               onMouseLeave={() => setOpenDropdown(null)}
             >
               <Link
-                to="/category/heels"
+                to="/footwear"
                 className="text-sm font-medium tracking-wider text-foreground hover:opacity-70 transition-opacity"
               >
                 FOOTWEAR

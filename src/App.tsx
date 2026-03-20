@@ -10,6 +10,7 @@ import NotFound from "./pages/NotFound";
 import ProductPage from "./pages/ProductPage";
 import CategoryPage from "./pages/CategoryPage";
 import ApparelPage from "./pages/ApparelPage";
+import FootwearPage from "./pages/FootwearPage";
 import TrackOrderPage from "./pages/TrackOrderPage";
 import AccountPage from "./pages/AccountPage";
 import AuthPage from "./pages/AuthPage";
@@ -46,6 +47,7 @@ const App = () => (
             <Route path="/product/:handle" element={<ProductPage />} />
             <Route path="/category/:category" element={<CategoryPage />} />
             <Route path="/apparel" element={<ApparelPage />} />
+            <Route path="/footwear" element={<FootwearPage />} />
             <Route path="/track-order" element={<TrackOrderPage />} />
             <Route path="/account" element={<AccountPage />} />
             <Route path="/account/orders" element={<OrdersPage />} />

@@ -7,19 +7,14 @@ import { fetchProducts, formatPrice, ShopifyProduct } from "@/lib/shopify";
 import { useCartStore } from "@/stores/cartStore";
 import { toast } from "sonner";
 
-// Import subcategory images
-import shortsImage from "@/assets/shorts1.webp";
-import bodysuitImage from "@/assets/bodysuits1.webp";
-import jumpsuitsImage from "@/assets/jumpsuits1.webp";
+import rompersImage from "@/assets/rompers1.webp";
 
-// Subcategory circles
+// Subcategory circles for footwear
 const subcategoryCircles = [
-  { title: "Shorts", link: "/category/shorts", image: shortsImage },
-  { title: "Bodysuits", link: "/category/bodysuits", image: bodysuitImage },
-  { title: "Tennis Outfits", link: "/category/tennis-outfits", image: jumpsuitsImage },
+  { title: "Heels", link: "/category/heels", image: rompersImage },
 ];
 
-const ApparelPage = () => {
+const FootwearPage = () => {
   const [products, setProducts] = useState<ShopifyProduct[]>([]);
   const [loading, setLoading] = useState(true);
   const addItem = useCartStore((state) => state.addItem);
@@ -27,17 +22,26 @@ const ApparelPage = () => {
   useEffect(() => {
     const loadProducts = async () => {
       setLoading(true);
-      // Fetch all products and filter for apparel (exclude heels/footwear)
+      // Fetch all products and filter for footwear
       const allProducts = await fetchProducts(50);
-      const apparelProducts = allProducts.filter(
+      const footwearProducts = allProducts.filter(
         (p) =>
-          !p.node.title.toLowerCase().includes("heel") &&
-          !p.node.title.toLowerCase().includes("shoe") &&
-          !p.node.title.toLowerCase().includes("boot") &&
-          !p.node.title.toLowerCase().includes("sneaker") &&
-          !p.node.title.toLowerCase().includes("sandal")
+          p.node.title.toLowerCase().includes("heel") ||
+          p.node.title.toLowerCase().includes("shoe") ||
+          p.node.title.toLowerCase().includes("boot") ||
+          p.node.title.toLowerCase().includes("sneaker") ||
+          p.node.title.toLowerCase().includes("sandal") ||
+          p.node.title.toLowerCase().includes("pump") ||
+          p.node.title.toLowerCase().includes("loafer") ||
+          p.node.title.toLowerCase().includes("flat") ||
+          p.node.title.toLowerCase().includes("stiletto") ||
+          p.node.title.toLowerCase().includes("mule") ||
+          p.node.title.toLowerCase().includes("wedge") ||
+          p.node.title.toLowerCase().includes("footwear") ||
+          p.node.description?.toLowerCase().includes("heel") ||
+          p.node.description?.toLowerCase().includes("shoe")
       );
-      setProducts(apparelProducts);
+      setProducts(footwearProducts);
       setLoading(false);
     };
     loadProducts();
@@ -74,10 +78,10 @@ const ApparelPage = () => {
       {/* Hero Section */}
       <div className="py-8 px-4 md:px-8 lg:px-16 text-center border-b border-border">
         <h1 className="text-3xl md:text-4xl font-medium mb-2">
-          BATTI© Apparel
+          BATTI© Footwear
         </h1>
         <p className="text-muted-foreground">
-          Premium apparel designed for confidence and style.
+          Statement footwear designed to turn heads.
         </p>
       </div>
 
@@ -104,7 +108,7 @@ const ApparelPage = () => {
         <nav className="text-sm text-muted-foreground">
           <Link to="/" className="hover:text-foreground">Home</Link>
           <span className="mx-2">/</span>
-          <span className="text-foreground">Apparel</span>
+          <span className="text-foreground">Footwear</span>
         </nav>
       </div>
 
@@ -122,7 +126,7 @@ const ApparelPage = () => {
           </div>
         ) : products.length === 0 ? (
           <div className="text-center py-20">
-            <p className="text-muted-foreground text-lg mb-4">No apparel products available yet.</p>
+            <p className="text-muted-foreground text-lg mb-4">No footwear products available yet.</p>
             <p className="text-muted-foreground text-sm mb-6">Products will appear here once they are added to the store.</p>
             <Link to="/">
               <button className="text-sm font-medium uppercase tracking-wider underline underline-offset-4 hover:no-underline">
@@ -187,4 +191,4 @@ const ApparelPage = () => {
   );
 };
 
-export default ApparelPage;
+export default FootwearPage;
