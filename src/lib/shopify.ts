@@ -1,14 +1,10 @@
 import { toast } from "sonner";
 
 // Shopify API Configuration
-const SHOPIFY_API_VERSION = '2024-10';
+const SHOPIFY_API_VERSION = '2025-07';
 const SHOPIFY_STORE_PERMANENT_DOMAIN = import.meta.env.VITE_SHOPIFY_STORE_DOMAIN || 'battiapparel.myshopify.com';
 const SHOPIFY_STOREFRONT_URL = `https://${SHOPIFY_STORE_PERMANENT_DOMAIN}/api/${SHOPIFY_API_VERSION}/graphql.json`;
 const SHOPIFY_STOREFRONT_TOKEN = import.meta.env.VITE_SHOPIFY_STOREFRONT_TOKEN || '31d7e4fc0bb83e6a4b8e1c63827dd1e3';
-
-// Log configuration on load for debugging
-console.log('[Shopify] Store domain:', SHOPIFY_STORE_PERMANENT_DOMAIN);
-console.log('[Shopify] API version:', SHOPIFY_API_VERSION);
 
 // Types
 export interface ShopifyProduct {
@@ -252,18 +248,9 @@ export async function storefrontApiRequest(query: string, variables: Record<stri
 // Fetch products
 export async function fetchProducts(first: number = 20, query?: string): Promise<ShopifyProduct[]> {
   try {
-    console.log('[Shopify] Fetching products...', { first, query });
     const data = await storefrontApiRequest(STOREFRONT_QUERY, { first, query });
-    if (!data) {
-      console.warn('[Shopify] No data returned from API (possible 402 payment required)');
-      return [];
-    }
-    const products = data.data.products.edges || [];
-    console.log(`[Shopify] Fetched ${products.length} products`);
-    if (products.length === 0) {
-      console.warn('[Shopify] No products found. Make sure products are published to the Storefront API sales channel in your Shopify admin: https://admin.shopify.com/store/battiapparel/settings/apps/development');
-    }
-    return products;
+    if (!data) return [];
+    return data.data.products.edges || [];
   } catch (error) {
     console.error('Error fetching products:', error);
     return [];
