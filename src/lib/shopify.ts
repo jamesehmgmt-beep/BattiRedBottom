@@ -2,9 +2,9 @@ import { toast } from "sonner";
 
 // Shopify API Configuration
 const SHOPIFY_API_VERSION = '2024-10';
-const SHOPIFY_STORE_PERMANENT_DOMAIN = import.meta.env.VITE_SHOPIFY_STORE_DOMAIN || 'batti-reds.myshopify.com';
+const SHOPIFY_STORE_PERMANENT_DOMAIN = import.meta.env.VITE_SHOPIFY_STORE_DOMAIN || 'battiapparel.myshopify.com';
 const SHOPIFY_STOREFRONT_URL = `https://${SHOPIFY_STORE_PERMANENT_DOMAIN}/api/${SHOPIFY_API_VERSION}/graphql.json`;
-const SHOPIFY_STOREFRONT_TOKEN = import.meta.env.VITE_SHOPIFY_STOREFRONT_TOKEN || 'ed7527ecbd91f88d4f64627a4a128201';
+const SHOPIFY_STOREFRONT_TOKEN = import.meta.env.VITE_SHOPIFY_STOREFRONT_TOKEN || '31d7e4fc0bb83e6a4b8e1c63827dd1e3';
 
 // Log configuration on load for debugging
 console.log('[Shopify] Store domain:', SHOPIFY_STORE_PERMANENT_DOMAIN);
